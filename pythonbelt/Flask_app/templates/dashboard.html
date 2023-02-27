@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyPie Derby</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body class="">
+    <nav class="bg-success bg-opacity-25 d-flex justify-content-end p-3">
+        <a href="/pies" class="btn bg-danger-subtle fw-semibold m-3">Pie Derby</a>
+        <a href="/logout" class="btn bg-danger-subtle m-3">Logout</a>
+    </nav>
+    <div class="d-flex justify-content-around container-xl mt-3 p-3">
+        <div class="w-50 p-3">
+            <h2>PyPies by {{user.first_name}}</h2>
+            <table class="w-100 table  table-success table-striped">
+                <thead>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody  class="table-group-divider">
+                    {%for pie in pies%}
+                    <tr>
+                    
+                        <td>{{pie.name}}</td>
+                        <td><a href="/pie/{{pie.id}}/edit">edit</a><span> <a href="/pies/destroy/{{pie.id}}">delete</a></span></td>
+                    
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <div class="p-3 w-50 m-3">
+            <h2>Add New Pie</h2>
+            <form action="/pie/new" method="post" class="w-75 bg-success-subtle p-3">
+                <label for="" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="">
+                <label for="" class="form-label">Filling</label>
+                <input type="text" name="filling" id="" class="form-control">
+                <label for="" class="form-label">Crust</label>
+                <input type="text" name="crust" id="" class="form-control">
+                <button type="submit" class="form-button mt-3 col-3 btn btn-dark">Add Pie</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
